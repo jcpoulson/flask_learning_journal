@@ -5,11 +5,14 @@ DATABASE = SqliteDatabase('journal.db')
 
 class Post(Model):
     id = AutoField(primary_key=True, unique=True)
-    title = TextField()
+    title = TextField(unique=True)
     date = DateField()
     time_spent = IntegerField()
     learned = TextField()
     resources = TextField()
+
+    class Meta:
+        database = DATABASE
 
     @classmethod
     def create_post(cls, title, date, time_spent, learned, resources):
@@ -22,10 +25,7 @@ class Post(Model):
                 resources=resources
             )
         except IntegrityError:
-            raise ValueError("Post already exists")
-
-    class Meta:
-        database = DATABASE
+            print("Post already exists")
 
 
 def initialize():
@@ -33,8 +33,8 @@ def initialize():
     DATABASE.create_tables([Post], safe=True)
     Post.create_post(
         'First Post', 
-        '11/26/2020', 
-        2, 
+        '2020-11-26', 
+        1, 
         'About Flask', 
         'Team Treehouse')
     DATABASE.close()
