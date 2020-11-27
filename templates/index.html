@@ -1,0 +1,16 @@
+{%extends "layout.html" %}
+    {% block content %}
+        <section>
+            <div class="container">
+                <div class="entry-list">
+                    {% for post in posts %}
+                        <article>
+                            <h2><a href="{{url_for('index')}}/{{post.id}}">{{post.title}}</a></h2>
+                            <time>{{post.date}}</time>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+        

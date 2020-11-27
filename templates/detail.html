@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+    {% block content %}
+        <section>
+            <div class="container">
+                <div class="entry-list single">
+                    <article>
+                        <h1>{{post.title}}</h1>
+                        <time datetime="2016-01-31">{{post.date}}</time>
+                        <div class="entry">
+                            <h3>Time Spent: </h3>
+                            {% if post.time_spent == 1 %}
+                                <p>{{post.time_spent}} Hour</p>
+                            {% else %}
+                                <p>{{post.time_spent}} Hours</p>
+                            {%endif%}
+                        </div>
+                        <div class="entry">
+                            <h3>What I Learned:</h3>
+                            <p>{{post.learned}}</p>
+                        </div>
+                        <div class="entry">
+                            <h3>Resources to Remember:</h3>
+                            <p>{{post.resources}}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="edit">
+                <p><a href="{{url_for('index')}}/{{post.id}}/edit">Edit Entry</a></p>
+                <p><a href="{{url_for('index')}}/{{post.id}}/delete" >Delete Entry</a></p>
+            </div>
+        </section>
+    {% endblock %}
+        

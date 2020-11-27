@@ -1,0 +1,48 @@
+{% from 'macros.html' import render_field %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>MyJournal</title>
+        <link href="https://fonts.googleapis.com/css?family=Cousine:400" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../../static/normalize.css">
+        <link rel="stylesheet" href="../../static/site.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="site-header">
+                    <a class="logo" href="/entries"><i class="material-icons">library_books</i></a>
+                    <a class="button icon-right" href="/entries/new"><span>New Entry</span> <i class="material-icons">add</i></a>
+                </div>
+            </div>
+        </header>
+        
+        <section>
+            <div class="container">
+                <div class="edit-entry">
+                    <h2>Edit Entry</h2>
+                    <form method="POST" action="" class="form">
+                        {{ postForm.hidden_tag() }}
+                            {% for field in postForm %}
+                                {{ field.label}}
+                                {{render_field(field)}}
+                            {% endfor %}
+                            <input type="submit" value="Save Entry" class="button">
+                            <a href="{{url_for('index')}}" class="button button-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+
+        <footer>
+            <div>
+                &copy; MyJournal
+            </div>
+        </footer>
+    </body>
+</html>
