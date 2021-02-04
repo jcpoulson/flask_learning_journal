@@ -78,4 +78,4 @@ def delete(id):
 
 if __name__ == '__main__':
     models.initialize()
-    app.run(debug=True, port=5500, host=0.0)
+    app.run()
